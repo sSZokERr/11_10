@@ -1,23 +1,30 @@
 class Statue implements Artwork{
     height : number;
+    title : string;
+    year : number;
+    price : number;
 
-    constructor(height: number){
+    constructor(height: number, title: string, year: number, price: number){
         this.height = height;
+        this.title = title;
+        this.year = year;
+        this.price = price;
+        
     }
     get getHeight(): number {return this.height;}
     set setHeight(height: number) {this.height = height;}
 
-    get title(): string {return this.title;}
-    set title(title: string){this.title = title;}
+    get getmTitle(): string {return this.title;}
+    set setTitle(title: string){this.title = title;}
 
-    get price(): number {return this.price;}
-    set price(price: number) {this.price = price;}
+    get getPrice(): number {return this.price;}
+    set setPrice(price: number) {this.price = price;}
 
-    get year() : number {return this.year;}
-    set year(year : number) {this.year = year;}
+    get getYear() : number {return this.year;}
+    set setYear(year : number) {this.year = year;}
 }
 
-let newStatue : Artwork[];
+let newStatue : Artwork[] = [];
 
 document.addEventListener('DOMContentLoaded', () => {
     let nameRegex = /^[aA-zZ]{1,}/;
@@ -74,11 +81,22 @@ document.addEventListener('DOMContentLoaded', () => {
             checkHeight = true;
         }
         if(checkHeight == true && checkPrice == true && checkYear == true && checkName == true){
+            newStatue.push(new Statue(parseInt(inpHeight.value),inpTitle.value, parseInt(inpPrice.value), parseInt(inpYear.value)))
             
+            document.getElementById("counter")!.innerHTML = "Osszes mu: " + String(newStatue.length);
+            let sumPrice = 0;
+            for (let a = 0; a < newStatue.length; a++){
+                sumPrice += parseInt(inpPrice.value);
+            }
+            console.log(inpPrice.value)
+            console.log(sumPrice)
+            document.getElementById("sumPrice")!.innerHTML = "Ossz ertek: " + String(sumPrice) + "FT";
+
+            inpHeight.value = "";
+            inpTitle.value = "";
+            inpPrice.value = "";
+            inpYear.value = ""; 
         }
-
-
-
     })
 
 })

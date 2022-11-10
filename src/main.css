@@ -1,8 +1,11 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,900,700,500);
 .body-text {
     padding: 0 20px 30px 20px;
-    font-family: "Roboto";
     font-size: 1em;
     color: #333;
     text-align: center;
     line-height: 1.2em;
+}
+body{
+    font-family: "Roboto";
 }

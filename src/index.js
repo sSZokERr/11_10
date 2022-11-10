@@ -1,18 +1,21 @@
 "use strict";
 class Statue {
-    constructor(height) {
+    constructor(height, title, year, price) {
         this.height = height;
+        this.title = title;
+        this.year = year;
+        this.price = price;
     }
     get getHeight() { return this.height; }
     set setHeight(height) { this.height = height; }
-    get title() { return this.title; }
-    set title(title) { this.title = title; }
-    get price() { return this.price; }
-    set price(price) { this.price = price; }
-    get year() { return this.year; }
-    set year(year) { this.year = year; }
+    get getmTitle() { return this.title; }
+    set setTitle(title) { this.title = title; }
+    get getPrice() { return this.price; }
+    set setPrice(price) { this.price = price; }
+    get getYear() { return this.year; }
+    set setYear(year) { this.year = year; }
 }
-let newStatue;
+let newStatue = [];
 document.addEventListener('DOMContentLoaded', () => {
     var _a;
     let nameRegex = /^[aA-zZ]{1,}/;
@@ -69,6 +72,19 @@ document.addEventListener('DOMContentLoaded', () => {
             checkHeight = true;
         }
         if (checkHeight == true && checkPrice == true && checkYear == true && checkName == true) {
+            newStatue.push(new Statue(parseInt(inpHeight.value), inpTitle.value, parseInt(inpPrice.value), parseInt(inpYear.value)));
+            document.getElementById("counter").innerHTML = "Osszes mu: " + String(newStatue.length);
+            let sumPrice = 0;
+            for (let a = 0; a < newStatue.length; a++) {
+                sumPrice += parseInt(inpPrice.value);
+            }
+            console.log(inpPrice.value);
+            console.log(sumPrice);
+            document.getElementById("sumPrice").innerHTML = "Ossz ertek: " + String(sumPrice) + "FT";
+            inpHeight.value = "";
+            inpTitle.value = "";
+            inpPrice.value = "";
+            inpYear.value = "";
         }
     });
 });
